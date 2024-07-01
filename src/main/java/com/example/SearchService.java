@@ -10,9 +10,12 @@ import java.util.*;
 public class SearchService {
 
     private final String[] processingServers = {
-        "http://34.172.60.58:8080",
-        "http://34.66.126.176:8080",
-        "http://34.31.70.152:8080"
+            // "http://34.172.60.58:8080",
+            // "http://34.66.126.176:8080",
+            // "http://34.31.70.152:8080"
+            "http://10.128.0.40:8080",
+            "http://10.128.0.42:8080",
+            "http://10.128.0.41:8080"
     };
 
     private final RestTemplate restTemplate = new RestTemplate();
@@ -54,9 +57,9 @@ public class SearchService {
             }
 
             UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(serverUrl + "/search")
-                .queryParam("n", n)
-                .queryParam("startDocumentIndex", startDocument)
-                .queryParam("endDocumentIndex", endDocument);
+                    .queryParam("n", n)
+                    .queryParam("startDocumentIndex", startDocument)
+                    .queryParam("endDocumentIndex", endDocument);
 
             try {
                 Map<String, Object> serverResponse = restTemplate.getForObject(uriBuilder.toUriString(), Map.class);
